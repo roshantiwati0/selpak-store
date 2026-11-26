@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selpak Store — Design index</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 16px 64px; }
+  .lead { color: var(--muted); max-width: 70ch; margin-top: 8px; }
+  .docs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0 40px; }
+  .docs a { display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px; color: var(--body); }
+  .docs a:hover { border-color: var(--blue-600); text-decoration: none; box-shadow: var(--shadow-1); }
+  .docs b { display: block; color: var(--ink); font-size: 17px; }
+  .screens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .screen { background: #fff; border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; }
+  .screen-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .screen-head span { color: var(--muted); font-size: 13px; }
+  .frames { display: flex; gap: 14px; align-items: flex-start; }
+  /* Scaled live previews: desktop 1280px @ 0.31, mobile 375px @ 0.45 */
+  .fr { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); flex: none; }
+  .fr iframe { border: 0; transform-origin: 0 0; pointer-events: none; }
+  .fr.d { width: 397px; height: 300px; } .fr.d iframe { width: 1280px; height: 968px; transform: scale(.31); }
+  .fr.m { width: 135px; height: 300px; border-radius: 14px; border-width: 3px; border-color: #1c2740; } .fr.m iframe { width: 375px; height: 834px; transform: scale(.36); }
+  .todo { margin-top: 40px; }
+  .todo li { margin: 6px 0; }
+  @media (max-width: 1180px) { .screens { grid-template-columns: 1fr; } }
+  @media (max-width: 620px) { .docs { grid-template-columns: 1fr; } .fr.d { display: none; } }
+</style>
+</head>
+<body style="padding-bottom:0">
+<div class="wrap">
+  <img src="assets/logo.png" alt="Selpak" style="height:64px">
+  <h1 style="margin-top:12px">Selpak Store — UI design</h1>
+  <p class="lead">Ecommerce website ka poora design, development se pehle. Sirf B2C (ghar ke customer ke liye). Catalogue 2026 ke asli products aur MRP ke saath. Har screen desktop aur mobile dono me. Kisi bhi preview par click karke poora page kholo.</p>
+
+  <div class="docs">
+    <a href="design-system.html"><b>1. Design system</b>Colours, typography, spacing, buttons, cards, form fields aur team ke rules.</a>
+    <a href="sitemap-userflow.html"><b>2. Sitemap and user flows</b>Saare pages ka map, customer ka flow, routes aur backend ki zarurat.</a>
+  </div>
+
+  <h2 style="margin-bottom:16px">3. Screens</h2>
+  <div class="screens" id="screens"></div>
+
+  <div class="card card-pad todo">
+    <h3>Design me jo cheezein placeholder hain (sir se confirm karni hain)</h3>
+    <ul>
+      <li>Selling price: abhi har jagah MRP dikhaya hai. Discount ho to badlega.</li>
+      <li>Delivery charge, delivery area (pincodes) aur minimum order.</li>
+      <li>Selpak Professional range (dispensers, HRT/JRT rolls) B2C design me shamil nahi hai.</li>
+      <li>Contact page ka address, email, timing aur WhatsApp number.</li>
+      <li>Product ke extra photos aur description (catalogue me ek hi photo hai).</li>
+      <li>Selpak logo aur pack images use karne ki brand permission.</li>
+    </ul>
+  </div>
+</div>
+<script>
+const SCREENS = [
+  ["home.html", "Home", "Hero, categories, popular packs, promo packs"],
+  ["shop.html?cat=toilet", "Shop / category", "Filters, sort, product grid"],
+  ["product.html?id=tp-12", "Product detail", "Quantity, delivery check, details"],
+  ["cart.html", "Cart", "Items and order summary"],
+  ["checkout.html", "Checkout", "Contact, address, Razorpay / COD"],
+  ["order-success.html", "Order placed", "Confirmation and tracking"],
+  ["account-orders.html", "My orders", "Order list with status"],
+  ["login.html", "Login / sign up", "Mobile number and OTP"],
+  ["contact.html", "Contact", "Seller details and message form"],
+];
+document.getElementById("screens").innerHTML = SCREENS.map(([src, name, desc]) => `
+  <a class="screen" href="${src}" style="color:inherit;text-decoration:none">
+    <div class="screen-head"><h3>${name}</h3><span>${desc}</span></div>
+    <div class="frames">
+      <div class="fr d"><iframe src="${src}" loading="lazy" tabindex="-1" title="${name} desktop"></iframe></div>
+      <div class="fr m"><iframe src="${src}" loading="lazy" tabindex="-1" title="${name} mobile"></iframe></div>
+    </div>
+  </a>`).join("");
+</script>
+</body>
+</html>
