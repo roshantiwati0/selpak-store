@@ -20,10 +20,16 @@ npm run dev        # http://localhost:3000
 Other commands:
 
 ```bash
-npm run lint       # check the code
+npm run lint       # check the code with ESLint
+npm run typecheck  # check TypeScript types
 npm run build      # production build
 npm run start      # serve the production build
+npm run test:e2e   # end-to-end tests in a real browser (see Testing)
+npm run check      # lint + typecheck + build, run this before every pull request
 ```
+
+The `dev`, `build` and `start` scripts set `NEXT_TELEMETRY_DISABLED=1`, so Next.js does not send
+usage data from this project. The app itself contains no analytics or tracking scripts.
 
 ## Demo mode and the real backend
 
@@ -76,12 +82,43 @@ Pages and components never read the data file, `fetch` or `localStorage` directl
 `lib/catalog.ts` (products) and `api` from `lib/api` (login, orders, payment). That is why the
 backend can be connected later without changing the pages.
 
+## Testing
+
+`npm run test:e2e` runs the [Playwright](https://playwright.dev) tests in `e2e/`. It uses the dev
+server if one is already running on port 3000, otherwise it starts one. The tests use the Microsoft
+Edge already installed on the computer, so nothing extra is downloaded
+(`PW_CHANNEL=chrome npm run test:e2e` uses Chrome instead).
+
+| File | What it checks |
+|---|---|
+| `e2e/console.spec.ts` | Every page loads with **no console errors or warnings** and no issues in the Next.js dev overlay |
+| `e2e/seo.spec.ts` | Product lists, titles, canonical links and structured data are in the server HTML; sitemap and robots.txt |
+| `e2e/shopping.spec.ts` | Cart, checkout (COD and online with failure + retry), login, orders, reorder, filters, search, contact form, mobile layout |
+
+To test a production build: `npm run build`, then `npm run start -- -p 3210`, then
+`E2E_BASE_URL=http://localhost:3210 npm run test:e2e`.
+
+## Next.js 16 rules that are easy to get wrong
+
+These caused real errors in the dev overlay, so follow them in new pages:
+
+- **Do not `await params` or `await searchParams` at the top of a page.** Pass the promise to a child
+  component wrapped in `<Suspense fallback={...}>` and await it there. See
+  `src/app/product/[slug]/page.tsx` and `src/app/shop/page.tsx`.
+- **Read URL data on the server, not with `useSearchParams`, when the result should be in the HTML.**
+  A client component that calls `useSearchParams` is rendered only in the browser, so its content is
+  missing from the server HTML (bad for SEO). `ShopView` gets `search` and `initialTag` as props.
+- **Images above the fold need `loading="eager"`** (or `preload` for the single main image). The old
+  `priority` prop is deprecated.
+- **Previous pages stay mounted but hidden.** Use `useId()` for element ids in components that can
+  appear on more than one page at once, and in tests select with `:visible`.
+
 ## Rules
 
 - Do not invent new colours or font sizes; use the tokens and classes in `globals.css`.
 - Build every state: loading, empty, error and success.
 - Show prices with `inr(amount)`. Totals in the frontend are for display only; the backend must
   calculate the real amount.
-- `npm run lint` and `npm run build` must pass before every pull request.
+- `npm run check` and `npm run test:e2e` must pass before every pull request.
 - This Next.js version is new. Before using a Next.js feature, read the bundled docs in
   `node_modules/next/dist/docs/` (see `AGENTS.md`).
