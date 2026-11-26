@@ -1,10 +1,14 @@
 # Selpak Store
 
-B2C ecommerce website for Selpak tissue and hygiene products. Frontend design (pre-development).
+B2C ecommerce website for Selpak tissue and hygiene products.
 
-- Open `design/index.html` in a browser to see all screens.
-- `design/Selpak_Store_Design.pdf` has every screen (desktop + mobile) in one file.
-- `design/design-system.html` — colours, typography, components.
-- `design/sitemap-userflow.html` — sitemap, user flows, routes.
+Website ka code `web/` folder me hai (Next.js + React + TypeScript).
 
-Prices, order numbers and addresses shown in the mockups are sample data.
+```bash
+cd web
+npm install
+npm run dev
+```
+
+Phir browser me http://localhost:3000 kholo. Backend ke bina app demo mode me chalta hai
+(login OTP `123456`, test payment). Poora detail: `web/README.md`.
