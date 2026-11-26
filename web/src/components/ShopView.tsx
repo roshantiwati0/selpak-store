@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { getCategories, getProducts, queryProducts, type PriceRange, type SortKey, type TypeFilter } from "@/lib/catalog";
 import type { CategoryId } from "@/lib/types";
@@ -26,17 +25,16 @@ const PRICES: { id: PriceRange; label: string }[] = [
 interface Props {
   category?: CategoryId;
   categoryName?: string;
+  /** search text from the URL (?q=) */
+  search?: string;
+  /** type filter to start with, from the URL (?tag=promo) */
+  initialTag?: string;
 }
 
-/* URL (?q=, ?tag=) badalne par filters naye sire se shuru hon, isliye key lagayi hai. */
-export function ShopView(props: Props) {
-  const params = useSearchParams();
-  const search = params.get("q") ?? "";
-  const tag = params.get("tag") ?? "";
-  return <ShopInner key={`${props.category ?? "all"}|${search}|${tag}`} {...props} search={search} initialTag={tag} />;
-}
-
-function ShopInner({ category, categoryName, search, initialTag }: Props & { search: string; initialTag: string }) {
+/* URL ka data (category, ?q=, ?tag=) server page padhta hai aur props me deta hai,
+   isliye products ki list server ke HTML me hoti hai (SEO). Filters aur sort browser me chalte hain.
+   URL badalne par page is component ko naya `key` deta hai, jisse filters reset ho jaate hain. */
+export function ShopView({ category, categoryName, search = "", initialTag = "" }: Props) {
   const [types, setTypes] = useState<TypeFilter[]>(() =>
     TYPES.some((t) => t.id === initialTag) ? [initialTag as TypeFilter] : [],
   );
@@ -135,7 +133,7 @@ function ShopInner({ category, categoryName, search, initialTag }: Props & { sea
             </select>
           </div>
           {products.length > 0 ? (
-            <ProductGrid products={products} columns={3} />
+            <ProductGrid products={products} columns={3} eagerCount={6} />
           ) : (
             <div className="card empty">
               <h3>No products found</h3>
@@ -153,17 +151,6 @@ function ShopInner({ category, categoryName, search, initialTag }: Props & { sea
           )}
         </div>
       </div>
-    </main>
-  );
-}
-
-export function ShopFallback() {
-  return (
-    <main className="container" aria-busy="true">
-      <div className="crumbs">Home / Shop</div>
-      <p className="muted" style={{ padding: "40px 0" }}>
-        Loading products…
-      </p>
     </main>
   );
 }
