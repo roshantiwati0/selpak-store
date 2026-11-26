@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
 import { api, errorMessage } from "@/lib/api";
 import { inr } from "@/lib/format";
 import type { Product } from "@/lib/types";
@@ -13,6 +13,8 @@ type PinState = { tone: "ok" | "err"; message: string } | null;
 
 export function BuyBox({ product }: { product: Product }) {
   const router = useRouter();
+  /* useId: pichhla product page chhupa hua DOM me rehta hai, isliye id har instance ka alag hona chahiye */
+  const pinId = useId();
   const [qty, setQty] = useState(1);
   const [pin, setPin] = useState("");
   const [pinState, setPinState] = useState<PinState>(null);
@@ -59,11 +61,11 @@ export function BuyBox({ product }: { product: Product }) {
 
       <form className="card card-pad" style={{ marginTop: 20 }} onSubmit={checkPin}>
         <h3 style={{ marginBottom: 10 }}>
-          <label htmlFor="pin">Check delivery</label>
+          <label htmlFor={pinId}>Check delivery</label>
         </h3>
         <div className="pin">
           <input
-            id="pin"
+            id={pinId}
             className="input"
             inputMode="numeric"
             maxLength={6}

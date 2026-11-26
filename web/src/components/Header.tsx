@@ -37,7 +37,7 @@ export function Header() {
       <header className="header">
         <div className="container header-main">
           <Link className="logo" href="/" aria-label="Selpak Store home">
-            <Image src="/logo.png" alt="Selpak" width={250} height={208} priority />
+            <Image src="/logo.png" alt="Selpak" width={250} height={208} loading="eager" />
           </Link>
           <form className="search" role="search" onSubmit={onSearch}>
             <SearchIcon size={20} />

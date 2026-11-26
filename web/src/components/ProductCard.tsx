@@ -5,14 +5,26 @@ import { inr } from "@/lib/format";
 import type { Product } from "@/lib/types";
 import { AddToCartButton } from "./AddToCartButton";
 
-export function ProductCard({ product }: { product: Product }) {
+interface CardProps {
+  product: Product;
+  /** true for cards visible without scrolling, so their image is not lazy-loaded */
+  eager?: boolean;
+}
+
+export function ProductCard({ product, eager = false }: CardProps) {
   const href = `/product/${product.id}`;
   const title = productTitle(product);
   return (
     <article className="pcard">
       <Link className="pcard-media" href={href} tabIndex={-1} aria-hidden="true">
         {product.tag && <span className={`badge badge-${product.tag}`}>{product.tagText}</span>}
-        <Image src={productImage(product.id)} alt="" fill sizes="(max-width: 760px) 50vw, (max-width: 1000px) 33vw, 280px" />
+        <Image
+          src={productImage(product.id)}
+          alt=""
+          fill
+          sizes="(max-width: 760px) 50vw, (max-width: 1000px) 33vw, 280px"
+          loading={eager ? "eager" : "lazy"}
+        />
       </Link>
       <div className="pcard-body">
         <Link className="pcard-name" href={href}>
@@ -31,11 +43,18 @@ export function ProductCard({ product }: { product: Product }) {
   );
 }
 
-export function ProductGrid({ products, columns = 4 }: { products: Product[]; columns?: 3 | 4 }) {
+interface GridProps {
+  products: Product[];
+  columns?: 3 | 4;
+  /** how many cards from the start are above the fold (their images load eagerly) */
+  eagerCount?: number;
+}
+
+export function ProductGrid({ products, columns = 4, eagerCount = 0 }: GridProps) {
   return (
     <div className={columns === 3 ? "grid grid-3" : "grid"}>
-      {products.map((p) => (
-        <ProductCard key={p.id} product={p} />
+      {products.map((p, i) => (
+        <ProductCard key={p.id} product={p} eager={i < eagerCount} />
       ))}
     </div>
   );

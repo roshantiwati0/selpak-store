@@ -91,7 +91,7 @@ function CheckoutForm() {
     setErrors(found);
     const firstBad = Object.keys(found)[0];
     if (firstBad) {
-      document.getElementById(`f-${firstBad}`)?.focus();
+      (e.currentTarget as HTMLFormElement).querySelector<HTMLElement>(`#f-${firstBad}`)?.focus();
       return;
     }
     setBusy(true);

@@ -38,9 +38,9 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-art" aria-hidden="true">
-            <Image src={productImage("tp-12")} alt="" width={384} height={232} priority />
-            <Image src={productImage("kt-4")} alt="" width={250} height={256} priority />
-            <Image src={productImage("ft-boutique-48")} alt="" width={690} height={605} priority />
+            <Image src={productImage("tp-12")} alt="" width={384} height={232} loading="eager" fetchPriority="high" />
+            <Image src={productImage("kt-4")} alt="" width={250} height={256} loading="eager" />
+            <Image src={productImage("ft-boutique-48")} alt="" width={690} height={605} loading="eager" />
           </div>
         </div>
       </section>

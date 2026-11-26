@@ -26,7 +26,7 @@ export function ContactForm() {
     setErrors(found);
     const firstBad = Object.keys(found)[0];
     if (firstBad) {
-      document.getElementById(`c-${firstBad}`)?.focus();
+      (e.currentTarget as HTMLFormElement).querySelector<HTMLElement>(`#c-${firstBad}`)?.focus();
       return;
     }
     setState("busy");
