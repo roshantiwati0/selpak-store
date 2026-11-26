@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selpak Store — Order placed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cart">
+<div id="site-header"></div>
+
+<main class="container">
+  <div class="card success">
+    <div class="success-ic" id="ic"></div>
+    <h1 style="font-size:28px">Order placed</h1>
+    <p class="muted" style="margin-top:8px">Thank you. We have sent the order details to your mobile number.</p>
+
+    <div class="card card-pad" style="text-align:left;margin-top:24px;background:var(--bg)">
+      <div class="sum-row"><span class="muted">Order number</span><b style="color:var(--ink)">SP-2026-000123 (sample)</b></div>
+      <div class="sum-row"><span class="muted">Payment</span><span>Paid online <span class="badge badge-ok">Paid</span></span></div>
+      <div class="sum-row"><span class="muted">Amount</span><b class="price" style="color:var(--ink)">&#8377;3,390</b></div>
+      <div class="sum-row"><span class="muted">Deliver to</span><span>Sample address, Mumbai</span></div>
+    </div>
+
+    <div class="track">
+      <div class="is-done">Placed</div><div>Packed</div><div>Out for delivery</div><div>Delivered</div>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+      <a class="btn btn-primary" href="account-orders.html">Track order</a>
+      <a class="btn btn-secondary" href="#">Download invoice</a>
+      <a class="btn btn-ghost" href="shop.html">Continue shopping</a>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>document.getElementById("ic").innerHTML = ICON.check;</script>
+</body>
+</html>

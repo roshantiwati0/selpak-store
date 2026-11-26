@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selpak Store — Login</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="account">
+<div id="site-header"></div>
+
+<main class="container">
+  <div class="card auth">
+    <h1 style="font-size:26px">Login or sign up</h1>
+    <p class="muted" style="margin-top:6px">Enter your mobile number. We will send a one-time password.</p>
+
+    <form class="stack" action="account-orders.html" style="margin-top:20px">
+      <div class="field"><label for="ph">Mobile number</label>
+        <div style="display:flex;gap:8px"><span class="input" style="width:64px;display:grid;place-items:center;background:var(--bg)">+91</span><input class="input" id="ph" inputmode="tel" maxlength="10" placeholder="10-digit mobile number"></div>
+      </div>
+      <button class="btn btn-primary btn-lg" type="submit">Send OTP</button>
+    </form>
+
+    <!-- State 2: OTP (developer ke liye reference) -->
+    <div style="border-top:1px dashed var(--line);margin-top:24px;padding-top:20px">
+      <div class="small muted" style="margin-bottom:8px">Next state: enter OTP</div>
+      <div class="field"><label>Enter the 6-digit OTP sent to +91 98XXXXXX10</label>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px">
+          <input class="input" style="text-align:center;padding:0" maxlength="1" value="4" aria-label="Digit 1"><input class="input" style="text-align:center;padding:0" maxlength="1" value="2" aria-label="Digit 2"><input class="input" style="text-align:center;padding:0" maxlength="1" aria-label="Digit 3"><input class="input" style="text-align:center;padding:0" maxlength="1" aria-label="Digit 4"><input class="input" style="text-align:center;padding:0" maxlength="1" aria-label="Digit 5"><input class="input" style="text-align:center;padding:0" maxlength="1" aria-label="Digit 6">
+        </div>
+        <span class="hint">Resend OTP in 00:24</span>
+      </div>
+    </div>
+
+    <p class="hint" style="margin-top:18px;text-align:center">By continuing you agree to our Terms and Privacy policy.</p>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
