@@ -122,7 +122,10 @@ npm run dev            <span class="c"># browser me http://localhost:3000 kholo<
     <tr><th style="width:30%">Command</th><th>Kya karta hai</th></tr>
     <tr><td><code>npm run dev</code></td><td>Development server. File save karte hi browser me badlav dikhta hai.</td></tr>
     <tr><td><code>npm run lint</code></td><td>Code ki galtiyan check karta hai. Har commit se pehle chalao.</td></tr>
+    <tr><td><code>npm run typecheck</code></td><td>TypeScript ki galtiyan check karta hai.</td></tr>
     <tr><td><code>npm run build</code></td><td>Production build. Agar yeh fail ho to code merge nahi hoga.</td></tr>
+    <tr><td><code>npm run test:e2e</code></td><td>Asli browser me 30 tests: poora shopping flow, SEO, aur console me koi error / warning nahi.</td></tr>
+    <tr><td><code>npm run check</code></td><td>lint + typecheck + build ek saath. Har Pull Request se pehle.</td></tr>
     <tr><td><code>npm run start</code></td><td>Build ki hui site chalata hai (launch jaisa).</td></tr>
   </table>
   <div class="box"><b>Demo mode:</b> backend ke bina login ka OTP hamesha <code>123456</code> hai, orders aapke browser me save hote hain, aur "Pay online" ek test screen kholta hai jisme koi asli paisa nahi katta. Settings <code>web/.env.example</code> me samjhayi gayi hain.</div>
@@ -277,7 +280,7 @@ npm run dev            <span class="c"># browser me http://localhost:3000 kholo<
     <div><b>1. Naya code lo</b><code>git pull</code> (main)</div><span>&rarr;</span>
     <div><b>2. Branch banao</b><code>feature/...</code></div><span>&rarr;</span>
     <div><b>3. Kaam + commit</b>chhote commits</div><span>&rarr;</span>
-    <div><b>4. Check</b>lint + build</div><span>&rarr;</span>
+    <div><b>4. Check</b>check + tests</div><span>&rarr;</span>
     <div><b>5. Pull Request</b>GitHub par</div><span>&rarr;</span>
     <div><b>6. Review + merge</b>Lead karega</div>
   </div>
@@ -289,8 +292,8 @@ git pull
 git checkout -b feature/razorpay-test-mode
 
 <span class="c"># Kaam karo, phir</span>
-npm run lint
-npm run build
+npm run check
+npm run test:e2e
 git add .
 git commit -m "Checkout: Razorpay test mode jodna"
 git push -u origin feature/razorpay-test-mode
@@ -319,7 +322,9 @@ git push -u origin feature/razorpay-test-mode
     <tr><td>TypeScript</td><td><code>any</code> mat likho. Type <code>lib/types.ts</code> me hai; nahi hai to wahin jodo.</td></tr>
     <tr><td>Naam</td><td>Component <code>PascalCase.tsx</code>, function / variable <code>camelCase</code>, ek file me ek mukhya component.</td></tr>
     <tr><td>Sachchai</td><td>Jhoothe reviews, ratings, "sirf 2 bache hain", ya bina tay kiye discount mat dikhao.</td></tr>
-    <tr><td>Next.js 16</td><td>Yeh version naya hai. Koi naya Next feature use karne se pehle <code>web/node_modules/next/dist/docs/</code> padho.</td></tr>
+    <tr><td>Next.js 16</td><td>Yeh version naya hai. Page ke upar <code>await params</code> / <code>await searchParams</code> mat karo: promise ko <code>&lt;Suspense&gt;</code> ke andar wale component ko do. Upar dikhne wali image par <code>loading="eager"</code>. Poori list <code>web/README.md</code> me; naya feature use karne se pehle <code>web/node_modules/next/dist/docs/</code> padho.</td></tr>
+    <tr><td>Console saaf</td><td>Browser console aur Next.js ke dev overlay me koi error / warning nahi hona chahiye. <code>npm run test:e2e</code> yahi check karta hai.</td></tr>
+    <tr><td>Privacy</td><td>Koi analytics / tracking script mat jodo. Next.js telemetry scripts me band hai.</td></tr>
   </table>
 </section>
 
@@ -362,6 +367,7 @@ git push -u origin feature/razorpay-test-mode
           <li>Contact form, 4 policy pages, 404 aur error page</li>
           <li>SEO: title, description, canonical, product schema, sitemap, robots</li>
           <li>Mobile layout, bottom navigation, keyboard / screen-reader labels</li>
+          <li>30 end-to-end tests (<code>npm run test:e2e</code>)</li>
         </ul>
       </td>
       <td>
@@ -374,7 +380,7 @@ git push -u origin feature/razorpay-test-mode
           <li>Seller ka address, email, timing</li>
           <li>Product description, extra photos</li>
           <li>Invoice download, order cancel</li>
-          <li>Automated tests (abhi nahi hain)</li>
+          <li>Asli backend ke saath tests (abhi tests sirf demo mode ke hain)</li>
           <li>Hosting, domain, analytics</li>
         </ul>
       </td>
@@ -437,7 +443,7 @@ git push -u origin feature/razorpay-test-mode
     <tr class="todo"><td>Saare prices sir ne confirm kiye</td><td>Seller ka address, email, phone sahi</td></tr>
     <tr class="todo"><td>Backend ke saath poora order flow test (COD + online)</td><td>Razorpay live keys env me (secret sirf backend)</td></tr>
     <tr class="todo"><td>Payment fail, cancel, internet band: sab case test</td><td>Asli phone (Android + iPhone) par test</td></tr>
-    <tr class="todo"><td><code>npm run lint</code> aur <code>npm run build</code> pass</td><td><code>NEXT_PUBLIC_SITE_URL</code> asli domain par</td></tr>
+    <tr class="todo"><td><code>npm run check</code> aur <code>npm run test:e2e</code> pass</td><td><code>NEXT_PUBLIC_SITE_URL</code> asli domain par</td></tr>
     <tr class="todo"><td>HTTPS chalu, domain juda</td><td>Sitemap Google Search Console me diya</td></tr>
     <tr class="todo"><td>Demo mode band (API URL set), "Demo" wale notice gayab</td><td>Ek asli chhota order karke poora dekha</td></tr>
   </table>
