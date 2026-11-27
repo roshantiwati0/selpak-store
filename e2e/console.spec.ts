@@ -20,6 +20,12 @@ const PAGES = [
   "/contact",
   "/policies/shipping",
   "/order",
+  // admin panel (bina login ke yeh login form dikhate hain; login ke baad wale pages admin.spec.ts me)
+  "/admin",
+  "/admin/orders",
+  "/admin/order",
+  "/admin/products",
+  "/admin/customers",
 ];
 
 function watchConsole(page: Page) {
