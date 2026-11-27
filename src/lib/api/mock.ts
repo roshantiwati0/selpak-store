@@ -10,7 +10,8 @@ import { ApiError, type Api } from "./types";
 const KEY = "selpak.orders.v1";
 const wait = (ms = 450) => new Promise((r) => setTimeout(r, ms));
 
-function readOrders(): Order[] {
+/* Admin panel ka demo backend (src/lib/admin/mock.ts) bhi inhi orders ko padhta / badalta hai. */
+export function readOrders(): Order[] {
   try {
     return JSON.parse(window.localStorage.getItem(KEY) ?? "[]") as Order[];
   } catch {
@@ -18,7 +19,7 @@ function readOrders(): Order[] {
   }
 }
 
-function writeOrders(orders: Order[]) {
+export function writeOrders(orders: Order[]) {
   try {
     window.localStorage.setItem(KEY, JSON.stringify(orders));
   } catch {
@@ -26,7 +27,7 @@ function writeOrders(orders: Order[]) {
   }
 }
 
-function updateOrder(id: string, patch: Partial<Order>): Order {
+export function updateOrder(id: string, patch: Partial<Order>): Order {
   const orders = readOrders();
   const index = orders.findIndex((o) => o.id === id);
   if (index < 0) throw new ApiError("Order not found", 404);

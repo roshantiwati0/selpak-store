@@ -28,3 +28,9 @@ export const IS_DEMO = API_URL === "";
 export const RAZORPAY_KEY_ID = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ?? "";
 
 export const DEMO_OTP = "123456";
+
+/* Admin panel (/admin). Demo mode ka login; asli backend aane par login backend check karega. */
+export const DEMO_ADMIN = { username: "admin", password: "selpak123" };
+
+/* Itne ya isse kam stock par product "Low stock" dikhta hai. TODO(sir se confirm) */
+export const LOW_STOCK = 10;
