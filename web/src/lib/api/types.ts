@@ -18,7 +18,7 @@ export interface RazorpayResult {
   razorpay_signature: string;
 }
 
-/* Frontend ko backend se yahi functions chahiye. Poora detail docs/API_CONTRACT.md me hai. */
+/* Frontend ko backend se yahi functions chahiye. Poora detail API_CONTRACT.md me hai (team ke paas). */
 export interface Api {
   requestOtp(phone: string): Promise<void>;
   verifyOtp(phone: string, otp: string): Promise<{ user: User; token: string }>;

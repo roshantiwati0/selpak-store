@@ -1,18 +1,33 @@
-# Selpak Store — Web (frontend)
+# Selpak Store
 
-The B2C storefront, built with Next.js 16 (App Router), React 19 and TypeScript. Styling is plain
-CSS in `src/app/globals.css`, using the design-system tokens.
+A B2C e-commerce storefront for Selpak tissue and hygiene products: toilet paper, kitchen towels,
+facial tissue, hankies, wet wipes and napkins. Customers can browse the catalogue, add items to a
+cart, and check out with online payment (Razorpay) or cash on delivery.
 
-Design screenshots: [full design PDF](../design/Selpak_Store_Design.pdf) ·
-Team guide: [PDF](../docs/Selpak_Team_Guide.pdf) ·
-Backend endpoints: [API contract](../docs/API_CONTRACT.md)
+This repository is the **frontend**, built with Next.js 16 (App Router), React 19 and TypeScript.
+Styling is plain CSS in `src/app/globals.css`, using design-system tokens. The backend (database,
+API, payment verification) is built by a separate team.
+
+## Features
+
+- **Catalogue** — home page, 6 category pages and 40 product pages, with search, filters and sorting
+- **Cart** — quantities, totals, and a cart that survives closing the browser
+- **Checkout** — validated address form, cash on delivery, and online payment with failure and retry handling
+- **Orders** — order confirmation, order details, progress tracking and one-click reorder
+- **Account** — mobile number + OTP login, order history and profile
+- **Support** — contact form and shipping, returns, privacy and terms pages
+- **SEO** — server-rendered product lists, page titles, canonical URLs, product structured data, sitemap and robots.txt
+- **Responsive** — mobile-first layout with a bottom navigation bar and accessible, keyboard-friendly forms
+- **Tested** — 30 end-to-end tests cover the shopping flow, server-rendered HTML and a clean browser console
+- **Private** — no analytics or tracking scripts, and Next.js telemetry is switched off
 
 ## Run it
 
-You need Node.js 20.9 or newer.
+You need [Node.js](https://nodejs.org) 20.9 or newer.
 
 ```bash
-cd web
+git clone https://github.com/roshantiwati0/selpak-store.git
+cd selpak-store
 npm install
 npm run dev        # http://localhost:3000
 ```
@@ -37,9 +52,9 @@ Copy `.env.example` to `.env.local`.
 
 - `NEXT_PUBLIC_API_URL` **empty** → demo mode: the login OTP is `123456`, orders are saved in the
   browser, and online payment opens a test screen (no real money).
-- `NEXT_PUBLIC_API_URL` **set** → the real backend is used (`src/lib/api/http.ts`). The endpoints
-  are listed in the [API contract](../docs/API_CONTRACT.md). This path has not yet been tested
-  against a real server.
+- `NEXT_PUBLIC_API_URL` **set** → the real backend is used (`src/lib/api/http.ts`). The functions the
+  frontend expects from the backend are defined in `src/lib/api/types.ts`. This path has not yet
+  been tested against a real server.
 
 `NEXT_PUBLIC_RAZORPAY_KEY_ID` takes the **public** Razorpay key only. The secret key belongs to the
 backend and must never be added to the frontend or committed to Git.
@@ -122,3 +137,18 @@ These caused real errors in the dev overlay, so follow them in new pages:
 - `npm run check` and `npm run test:e2e` must pass before every pull request.
 - This Next.js version is new. Before using a Next.js feature, read the bundled docs in
   `node_modules/next/dist/docs/` (see `AGENTS.md`).
+
+## Project status
+
+The frontend is complete and tested in demo mode. Before launch, the following still needs to be done:
+
+- Connect and test the real backend API
+- Connect and test live Razorpay payments and SMS OTP
+- Confirm prices, delivery charges and delivery areas with the seller
+- Replace the draft policy pages with the seller's final text
+
+Prices shown are the catalogue MRP.
+
+## Sold by
+
+Hariom Marketing, Mumbai.

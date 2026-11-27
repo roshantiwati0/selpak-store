@@ -1,5 +1,5 @@
 /* ASLI backend ke liye. NEXT_PUBLIC_API_URL set hone par yeh use hota hai.
-   Endpoints docs/API_CONTRACT.md ke hisaab se hain; backend team ke saath confirm karke hi badlo.
+   Endpoints API_CONTRACT.md (team ke paas) ke hisaab se hain; backend team ke saath confirm karke hi badlo.
    NOTE: yeh code abhi kisi asli server ke saath test nahi hua hai. */
 import { API_URL } from "@/lib/config";
 import type { Order, User } from "@/lib/types";
