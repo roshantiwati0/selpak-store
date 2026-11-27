@@ -8,6 +8,32 @@ This repository is the **frontend**, built with Next.js 16 (App Router), React 1
 Styling is plain CSS in `src/app/globals.css`, using design-system tokens. The backend (database,
 API, payment verification) is built by a separate team.
 
+<p align="center">
+  <img src="docs/screenshots/05-product.png" alt="Product detail page on desktop and mobile" width="820">
+</p>
+
+## Design and screenshots
+
+Every screen was designed before development, in desktop and mobile sizes.
+
+- **[Full design (PDF)](docs/Selpak_Store_Design.pdf)** — all screens in one file
+- **[Team guide (PDF)](docs/Selpak_Team_Guide.pdf)** — project structure, team roles, workflow and launch plan
+- **[API contract](docs/API_CONTRACT.md)** — the endpoints the frontend expects from the backend
+
+| Screen | Image |
+|---|---|
+| Sitemap and user flows | [01-sitemap-userflow.png](docs/screenshots/01-sitemap-userflow.png) |
+| Design system | [02-design-system.png](docs/screenshots/02-design-system.png) |
+| Home | [03-home.png](docs/screenshots/03-home.png) |
+| Shop / category | [04-shop.png](docs/screenshots/04-shop.png) |
+| Product detail | [05-product.png](docs/screenshots/05-product.png) |
+| Cart | [06-cart.png](docs/screenshots/06-cart.png) |
+| Checkout | [07-checkout.png](docs/screenshots/07-checkout.png) |
+| Order placed | [08-order-placed.png](docs/screenshots/08-order-placed.png) |
+| My orders | [09-my-orders.png](docs/screenshots/09-my-orders.png) |
+| Login / sign up | [10-login.png](docs/screenshots/10-login.png) |
+| Contact | [11-contact.png](docs/screenshots/11-contact.png) |
+
 ## Features
 
 - **Catalogue** — home page, 6 category pages and 40 product pages, with search, filters and sorting
@@ -20,6 +46,17 @@ API, payment verification) is built by a separate team.
 - **Responsive** — mobile-first layout with a bottom navigation bar and accessible, keyboard-friendly forms
 - **Tested** — 30 end-to-end tests cover the shopping flow, server-rendered HTML and a clean browser console
 - **Private** — no analytics or tracking scripts, and Next.js telemetry is switched off
+
+## Tech stack
+
+| Tool | Used for |
+|---|---|
+| [Next.js 16](https://nextjs.org) (App Router) | Framework, routing, static pages, image optimisation |
+| React 19 | UI components |
+| TypeScript | Type safety |
+| Plain CSS with design tokens | Styling (`src/app/globals.css`) |
+| ESLint | Code quality |
+| Playwright | End-to-end tests |
 
 ## Run it
 
@@ -52,9 +89,9 @@ Copy `.env.example` to `.env.local`.
 
 - `NEXT_PUBLIC_API_URL` **empty** → demo mode: the login OTP is `123456`, orders are saved in the
   browser, and online payment opens a test screen (no real money).
-- `NEXT_PUBLIC_API_URL` **set** → the real backend is used (`src/lib/api/http.ts`). The functions the
-  frontend expects from the backend are defined in `src/lib/api/types.ts`. This path has not yet
-  been tested against a real server.
+- `NEXT_PUBLIC_API_URL` **set** → the real backend is used (`src/lib/api/http.ts`). The endpoints
+  are listed in the [API contract](docs/API_CONTRACT.md). This path has not yet been tested
+  against a real server.
 
 `NEXT_PUBLIC_RAZORPAY_KEY_ID` takes the **public** Razorpay key only. The secret key belongs to the
 backend and must never be added to the frontend or committed to Git.
@@ -69,6 +106,8 @@ src/
   lib/            catalog.ts (reading products), api/ (backend calls), config.ts, format.ts
   store/          cart, auth, address, toast (state saved in the browser)
 public/products/  Product images, named <product-id>.png
+e2e/              End-to-end tests (Playwright)
+docs/             Design PDF, screenshots, team guide and API contract
 ```
 
 ### Routes
@@ -147,7 +186,7 @@ The frontend is complete and tested in demo mode. Before launch, the following s
 - Confirm prices, delivery charges and delivery areas with the seller
 - Replace the draft policy pages with the seller's final text
 
-Prices shown are the catalogue MRP.
+Prices shown are the catalogue MRP. Order numbers and addresses in the design screenshots are sample data.
 
 ## Sold by
 
