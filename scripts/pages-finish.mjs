@@ -4,7 +4,7 @@
    2. Page badalne wali chhoti files: build unhe folder ke andar likhta hai (__next.login/__PAGE__.txt), par browser
       unhe ek hi naam se maangta hai (__next.login.__PAGE__.txt). Yahan har ek ki us naam wali copy bana dete hain,
       warna har link par "404 file nahi mili" aata hai aur page dheere badalta hai. */
-import { copyFileSync, existsSync, readdirSync, writeFileSync } from "node:fs";
+import { copyFileSync, cpSync, existsSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const out = join(process.cwd(), "out");
@@ -40,3 +40,36 @@ function walk(dir) {
 
 walk(out);
 console.log(`GitHub Pages ke liye taiyaar: out/ (.nojekyll + ${copies} page-badalne wali files)`);
+
+/* `npm run build:site` (aakhir me "site" likha hota hai): bani hui site ko folder "site" me rakhta hai, jo code ke
+   saath `main` branch par jaata hai. Tab GitHub Pages ki setting "main" hi rahe to bhi website khulti hai:
+   <address>/ -> index.html -> <address>/site/. Jad me teen chhoti files banti hain:
+   .nojekyll (taaki Pages files jaisi hain waisi de), index.html (site/ par bhejta hai), 404.html (galat address ka page). */
+if (process.argv[2] === "site") {
+  const root = process.cwd();
+  const site = join(root, "site");
+  rmSync(site, { recursive: true, force: true });
+  cpSync(out, site, { recursive: true });
+  rmSync(join(site, ".nojekyll"), { force: true });
+  writeFileSync(join(root, ".nojekyll"), "");
+  copyFileSync(join(out, "404.html"), join(root, "404.html"));
+  writeFileSync(
+    join(root, "index.html"),
+    `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Selpak Store</title>
+    <meta http-equiv="refresh" content="0; url=site/" />
+    <script>
+      location.replace("site/" + location.search + location.hash);
+    </script>
+  </head>
+  <body>
+    <a href="site/">Open Selpak Store</a>
+  </body>
+</html>
+`,
+  );
+  console.log("Folder site/ + index.html + 404.html + .nojekyll taiyaar (main branch ke liye)");
+}

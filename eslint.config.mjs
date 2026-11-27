@@ -10,6 +10,8 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
+    // Bani hui website (npm run build:site), haath se likha code nahi:
+    "site/**",
     "build/**",
     "next-env.d.ts",
   ]),
