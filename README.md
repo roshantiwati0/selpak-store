@@ -45,6 +45,8 @@ The original HTML mockups are in [`design/`](design/); open `design/index.html` 
 - **Support** — contact form and shipping, returns, privacy and terms pages
 - **SEO** — page titles and descriptions, canonical URLs, product structured data, sitemap and robots.txt
 - **Responsive** — mobile-first layout with a bottom navigation bar and accessible, keyboard-friendly forms
+- **Tested** — 30 end-to-end tests cover the shopping flow, server-rendered HTML and a clean browser console
+- **Private** — no analytics or tracking scripts, and Next.js telemetry is switched off
 
 ## Tech stack
 
@@ -75,6 +77,8 @@ Open http://localhost:3000.
 | `npm run lint` | Check the code with ESLint |
 | `npm run build` | Create a production build |
 | `npm run start` | Serve the production build |
+| `npm run test:e2e` | Run the end-to-end tests in a real browser |
+| `npm run check` | Lint, type-check and build in one step |
 
 ## Demo mode
 
@@ -113,7 +117,6 @@ The frontend is complete and tested in demo mode. Before launch, the following s
 - Connect and test live Razorpay payments and SMS OTP
 - Confirm prices, delivery charges and delivery areas with the seller
 - Replace the draft policy pages with the seller's final text
-- Add automated tests
 
 Prices shown are the catalogue MRP. Order numbers and addresses in the design screenshots are sample data.
 
