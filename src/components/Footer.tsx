@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getCategories } from "@/lib/catalog";
-import { SELLER, SITE } from "@/lib/config";
+import { asset, SELLER, SITE } from "@/lib/config";
 import { POLICIES } from "@/lib/policies";
 
 export function Footer() {
@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="footer">
       <div className="container">
         <div>
-          <Image src="/logo.png" alt="Selpak" width={250} height={208} />
+          <Image src={asset("/logo.png")} alt="Selpak" width={250} height={208} />
           <p>
             Selpak tissue and hygiene products for your home, sold by {SELLER.name}, {SELLER.city}.
           </p>

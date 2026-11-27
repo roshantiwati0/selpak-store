@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { ShopFromUrl } from "@/components/ShopFromUrl";
 import { ShopSkeleton } from "@/components/ShopSkeleton";
 import { ShopView } from "@/components/ShopView";
+import { IS_STATIC } from "@/lib/config";
 
 type Props = PageProps<"/shop">;
 
@@ -14,12 +16,11 @@ export const metadata: Metadata = {
 /* /shop          -> saare products
    /shop?q=wipes  -> search
    /shop?tag=promo -> promo packs
-   `searchParams` URL ka data hai, isliye <Suspense> ke andar padhte hain. */
+   `searchParams` URL ka data hai, isliye <Suspense> ke andar padhte hain.
+   GitHub Pages (IS_STATIC) par koi server nahi hota jo ?q= padhe, wahan yeh kaam browser karta hai (ShopFromUrl). */
 export default function ShopPage({ searchParams }: Props) {
   return (
-    <Suspense fallback={<ShopSkeleton />}>
-      <ShopResults searchParams={searchParams} />
-    </Suspense>
+    <Suspense fallback={<ShopSkeleton />}>{IS_STATIC ? <ShopFromUrl /> : <ShopResults searchParams={searchParams} />}</Suspense>
   );
 }
 

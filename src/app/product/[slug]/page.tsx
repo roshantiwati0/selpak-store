@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BuyBox } from "@/components/BuyBox";
 import { ProductGrid } from "@/components/ProductCard";
-import { getCategory, getProduct, getProducts, getRelated, productImage, productTitle } from "@/lib/catalog";
+import { getCategory, getProduct, getProducts, getRelated, productImage, productImagePath, productTitle } from "@/lib/catalog";
 import { SELLER, SITE } from "@/lib/config";
 import { inr } from "@/lib/format";
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description: `Buy ${title} online at ${inr(product.mrp)} (MRP, incl. taxes). Cash on delivery available.`,
     alternates: { canonical: `/product/${product.id}` },
-    openGraph: { title, images: [productImage(product.id)] },
+    openGraph: { title, images: [productImagePath(product.id)] },
   };
 }
 
@@ -53,7 +53,7 @@ async function ProductDetails({ params }: Pick<Props, "params">) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: title,
-    image: `${SITE.url}${productImage(product.id)}`,
+    image: `${SITE.url}${productImagePath(product.id)}`,
     brand: { "@type": "Brand", name: SITE.brand },
     gtin13: product.barcode,
     category: category?.name,

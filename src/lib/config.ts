@@ -8,6 +8,14 @@ export const SITE = {
   year: 2026,
 };
 
+/* GitHub Pages par site ek folder ke andar hoti hai ("/selpak-store"); apne server par yeh khaali rehta hai.
+   Link khud theek ho jaate hain, par picture ke raaste ke aage ise lagana padta hai: asset("/logo.png"). */
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export const asset = (path: string) => `${BASE_PATH}${path}`;
+
+/* true: site saadi HTML files me bani hai (GitHub Pages), peeche koi server nahi. */
+export const IS_STATIC = process.env.NEXT_PUBLIC_STATIC === "1";
+
 export const SELLER = {
   name: "Hariom Marketing",
   city: "Mumbai",

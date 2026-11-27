@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { getCategories } from "@/lib/catalog";
-import { SELLER } from "@/lib/config";
+import { asset, SELLER } from "@/lib/config";
 import { useAuth } from "@/store/auth";
 import { useCart } from "@/store/cart";
 import { CartIcon, SearchIcon, UserIcon } from "./Icons";
@@ -37,7 +37,7 @@ export function Header() {
       <header className="header">
         <div className="container header-main">
           <Link className="logo" href="/" aria-label="Selpak Store home">
-            <Image src="/logo.png" alt="Selpak" width={250} height={208} loading="eager" />
+            <Image src={asset("/logo.png")} alt="Selpak" width={250} height={208} loading="eager" />
           </Link>
           <form className="search" role="search" onSubmit={onSearch}>
             <SearchIcon size={20} />

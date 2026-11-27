@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
-import { IS_DEMO } from "@/lib/config";
+import { asset, IS_DEMO } from "@/lib/config";
 import { adminAuth, useAdminAuth } from "@/store/adminAuth";
 import { useHydrated } from "@/store/createStore";
 import { BoxIcon, CartIcon, GridIcon, HomeIcon, UserIcon } from "../Icons";
@@ -42,7 +42,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
       <div className="adm" hidden={!hydrated || !admin}>
       <aside className="adm-side">
         <Link className="adm-brand" href="/admin" aria-label="Admin dashboard">
-          <Image src="/logo.png" alt="Selpak" width={250} height={208} loading="eager" />
+          <Image src={asset("/logo.png")} alt="Selpak" width={250} height={208} loading="eager" />
           <span>Admin</span>
         </Link>
         <nav className="adm-nav" aria-label="Admin">

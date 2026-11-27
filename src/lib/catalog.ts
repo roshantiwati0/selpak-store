@@ -1,6 +1,7 @@
 /* Catalogue read functions. Pages sirf inhi ko use karte hain, data file ko seedha nahi.
    Backend aane par sirf is file ka andar ka code badlega. */
 import { CATEGORIES, PRODUCTS } from "@/data/catalog";
+import { asset } from "@/lib/config";
 import type { CategoryId, Product, ProductTag } from "@/lib/types";
 
 export function getCategories() {
@@ -68,6 +69,12 @@ export function productTitle(p: Product) {
   return `Selpak ${p.name}, ${p.size}`;
 }
 
+/** Picture of a product, ready for <Image src>. */
 export function productImage(id: string) {
+  return asset(productImagePath(id));
+}
+
+/** The same without the site's folder in front: for places that add the site address themselves (SEO data). */
+export function productImagePath(id: string) {
   return `/products/${id}.png`;
 }
