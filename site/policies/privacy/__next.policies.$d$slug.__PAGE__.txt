@@ -1,0 +1,42 @@
+1:"$Sreact.fragment"
+2:"/selpak-store/site/_next/static/chunks/372crbfar-lz_.js"
+3:"/selpak-store/site/_next/static/chunks/0eyo_ri1tt03v.js"
+4:I[21582,["$2","$3"],"SiteFrame"]
+5:I[2971,["$2","$3"],"Header"]
+6:I[5500,["$2","$3"],"Image"]
+7:I[22016,["$2","$3"],""]
+8:I[84276,["$2","$3"],"BottomNav"]
+9:I[39756,["$2","$3"],"default"]
+a:"/selpak-store/site/_next/static/chunks/0pr7f3rea1mo9.js"
+b:I[58298,["$2","$3","$a"],"default"]
+c:I[37457,["$2","$3"],"default"]
+d:I[94437,["$2","$3"],"Toaster"]
+16:"$Sreact.suspense"
+1a:"ViewportBoundary"
+1b:I[97367,["$2","$3"],"$1a"]
+1c:"MetadataBoundary"
+1d:I[97367,["$2","$3"],"$1c"]
+:HL["/selpak-store/site/_next/static/chunks/2dywmhktc__hm.css","style"]
+f:X
+12:X
+12:C
+15:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"className":"container","children":["$","$16",null,{"fallback":["$","p",null,{"className":"muted","style":{"padding":"40px 0"},"aria-busy":"true","children":"Loading…"}],"children":[["$","nav",null,{"className":"crumbs","aria-label":"Breadcrumb","children":[["$","$1","Home",{"children":[false,["$","$L7",null,{"href":"/","children":"Home"}]]}],["$","$1","Privacy policy",{"children":[" / ",["$","span",null,{"aria-current":"page","children":"Privacy policy"}]]}]]}],["$","article",null,{"className":"prose","children":[["$","h1",null,{"style":{"fontSize":"clamp(24px,3vw,32px)"},"children":"Privacy policy"}],[["$","section","What we collect",{"children":[["$","h2",null,{"children":"What we collect"}],[["$","p","Your name, mobile number, email (optional) and delivery address, so that we can deliver your order.",{"children":"Your name, mobile number, email (optional) and delivery address, so that we can deliver your order."}]]]}],["$","section","Payments",{"children":[["$","h2",null,{"children":"Payments"}],[["$","p","Online payments are processed by the payment gateway. We do not store card details.",{"children":"Online payments are processed by the payment gateway. We do not store card details."}]]]}],"$L17"]]}]]}]}],null,"$L18"]}],"p":"$@19","v":null,"s":"$f"}}]]
+13:[["children",{"s":{"n":"slug","t":"d","k":"privacy","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L9",null,{"parallelRouterKey":"children","template":["$","$Lc",null,{}]}]]}],"p":"$@14","v":"$12","s":"$f"},"c":"$Q15"}]]
+10:[["children",{"s":"policies","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L9",null,{"parallelRouterKey":"children","template":["$","$Lc",null,{}]}]]}],"p":"$@11","v":"$12","s":"$f"},"c":"$Q13"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/selpak-store/site/_next/static/chunks/2dywmhktc__hm.css","precedence":"next"}],["$","script","script-0",{"src":"/selpak-store/site/_next/static/chunks/372crbfar-lz_.js","async":true}],["$","script","script-1",{"src":"/selpak-store/site/_next/static/chunks/0eyo_ri1tt03v.js","async":true}]],["$","html",null,{"lang":"en-IN","children":["$","body",null,{"children":[["$","a",null,{"href":"#main","className":"sr-only","children":"Skip to content"}],["$","$L4",null,{"header":["$","$L5",null,{}],"footer":[["$","footer",null,{"className":"footer","children":[["$","div",null,{"className":"container","children":[["$","div",null,{"children":[["$","$L6",null,{"src":"/selpak-store/site/logo.png","alt":"Selpak","width":250,"height":208}],["$","p",null,{"children":["Selpak tissue and hygiene products for your home, sold by ","Hariom Marketing",", ","Mumbai","."]}]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Shop"}],[["$","$L7","toilet",{"href":"/shop/toilet","children":"Toilet Paper"}],["$","$L7","kitchen",{"href":"/shop/kitchen","children":"Kitchen Towels"}],["$","$L7","facial",{"href":"/shop/facial","children":"Facial Tissue"}],["$","$L7","hanky",{"href":"/shop/hanky","children":"Hanky"}],["$","$L7","wipes",{"href":"/shop/wipes","children":"Wet Wipes"}],["$","$L7","napkin",{"href":"/shop/napkin","children":"Napkins"}]]]}],["$","div",null,{"children":[["$","h4",null,{"children":"My account"}],["$","$L7",null,{"href":"/login","children":"Login / sign up"}],["$","$L7",null,{"href":"/account/orders","children":"My orders"}],["$","$L7",null,{"href":"/cart","children":"Cart"}]]}],["$","div",null,{"children":[["$","h4",null,{"children":"Help"}],["$","$L7",null,{"href":"/contact","children":"Contact us"}],[["$","$L7","shipping",{"href":"/policies/shipping","children":"Shipping policy"}],["$","$L7","returns",{"href":"/policies/returns","children":"Returns & refunds"}],["$","$L7","privacy",{"href":"/policies/privacy","children":"Privacy policy"}],["$","$L7","terms",{"href":"/policies/terms","children":"Terms & conditions"}]]]}]]}],["$","div",null,{"className":"footer-bottom","children":["$","div",null,{"className":"container","children":[["$","span",null,{"children":["© ",2026," ","Hariom Marketing",". All rights reserved."]}],["$","span",null,{"children":"UPI · Cards · Net banking · Cash on delivery"}]]}]}]]}],["$","$L8",null,{}]],"children":["$","$L9",null,{"parallelRouterKey":"children","error":"$b","errorStyles":[],"errorScripts":[["$","script","script-0",{"src":"/selpak-store/site/_next/static/chunks/0pr7f3rea1mo9.js","async":true}]],"template":["$","$Lc",null,{}],"notFound":[["$","main",null,{"className":"container","children":["$","div",null,{"className":"card empty","style":{"marginTop":40},"children":[["$","h1",null,{"style":{"fontSize":28,"marginBottom":6},"children":"Page not found"}],["$","p",null,{"children":"The page you are looking for does not exist or has moved."}],["$","div",null,{"style":{"display":"flex","gap":10,"justifyContent":"center","flexWrap":"wrap"},"children":[["$","$L7",null,{"className":"btn btn-primary","href":"/","children":"Go to home"}],["$","$L7",null,{"className":"btn btn-secondary","href":"/shop","children":"Shop all products"}]]}]]}]}],[]]}]}],["$","$Ld",null,{}]]}]}]]}],"p":"$@e","v":null,"s":"$f"},"c":"$Q10"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0B2154"}]]}],["$","$L1d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Privacy policy — Selpak Store"}],["$","meta","1",{"name":"description","content":"Selpak toilet rolls, kitchen towels, facial tissues, wet wipes and napkins, delivered to your door."}],["$","link","2",{"rel":"canonical","href":"https://roshantiwati0.github.io/selpak-store/site/policies/privacy/"}],["$","meta","3",{"property":"og:title","content":"Privacy policy — Selpak Store"}],["$","meta","4",{"property":"og:description","content":"Selpak toilet rolls, kitchen towels, facial tissues, wet wipes and napkins, delivered to your door."}],["$","meta","5",{"property":"og:site_name","content":"Selpak Store"}],["$","meta","6",{"property":"og:locale","content":"en_IN"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Privacy policy — Selpak Store"}],["$","meta","10",{"name":"twitter:description","content":"Selpak toilet rolls, kitchen towels, facial tissues, wet wipes and napkins, delivered to your door."}],"$L1e","$L1f"]}]}],null]}],null]}],"p":"$@20","v":null,"s":"$f"}},"a":"$@21","u":"$@22","b":"3J_ds13O3B0tl0epcPYpN"}
+23:I[97367,["$2","$3"],"OutletBoundary"]
+25:I[27201,["$2","$3"],"IconMark"]
+17:["$","section","Contact",{"children":[["$","h2",null,{"children":"Contact"}],[["$","p","For any privacy question, reach us through the Contact page.",{"children":"For any privacy question, reach us through the Contact page."}]]]}]
+18:["$","$L23",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@24"}]}]
+1e:["$","link","11",{"rel":"icon","href":"/selpak-store/site/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}]
+1f:["$","$L25","12",{}]
+f:300
+24:null
+22:true
+f:C
+21:0
+14:"$undefined"
+11:"$undefined"
+e:"$undefined"
+20:"$undefined"
+19:"$undefined"
