@@ -30,6 +30,10 @@
   --shadow-2: 0 8px 28px rgba(11,33,84,.14);
   --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  /* Glass (navbar) */
+  --glass-bg: rgba(255,255,255,.72);
+  --glass-blur: saturate(180%) blur(16px);
+  --glass-line: rgba(11,67,168,.20);
 }
 
 * { box-sizing: border-box; }
@@ -103,18 +107,18 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .topbar { background: var(--navy); color: #C9D6F2; font-size: 13px; }
 .topbar .container { display: flex; justify-content: space-between; gap: 16px; padding-top: 7px; padding-bottom: 7px; }
 .topbar a { color: #fff; }
-.header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
-.header-main { display: flex; align-items: center; gap: 20px; height: 72px; }
+/* Glass navbar: page ka content iske peeche se dhundhla dikhta hai. Border + halki chamak se kinara saaf rehta hai. */
+.header { position: sticky; top: 0; z-index: 20; background: var(--glass-bg); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-bottom: 1px solid var(--glass-line); box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 8px 24px rgba(11,33,84,.08); }.header-main { display: flex; align-items: center; gap: 20px; height: 72px; }
 .logo { display: flex; align-items: center; flex: none; }
 .logo img { height: 52px; width: auto; }
 .search { flex: 1; position: relative; max-width: 520px; }
-.search input { width: 100%; height: 44px; border-radius: var(--r-pill); border: 1.5px solid var(--line); padding: 0 16px 0 44px; background: var(--bg); }
+.search input { width: 100%; height: 44px; border-radius: var(--r-pill); border: 1.5px solid var(--glass-line); padding: 0 16px 0 44px; background: rgba(255,255,255,.6); }
 .search svg { position: absolute; left: 14px; top: 12px; color: var(--muted); }
 .header-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .icon-btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 12px; border-radius: var(--r-pill); color: var(--ink); font-weight: 600; font-size: 14px; position: relative; }
 .icon-btn:hover { background: var(--blue-50); text-decoration: none; }
 .cart-count { position: absolute; top: 4px; left: 24px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--yellow); color: var(--yellow-ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; }
-.nav { border-top: 1px solid var(--line); }
+.nav { border-top: 1px solid var(--glass-line); }
 .nav .container { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
 .nav a { padding: 12px 14px; font-size: 14px; font-weight: 600; color: var(--body); white-space: nowrap; border-bottom: 3px solid transparent; }
 .nav a:hover { color: var(--blue-700); text-decoration: none; }
@@ -344,7 +348,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .footer .container { grid-template-columns: 1fr 1fr; gap: 20px; }
   .footer-bottom .container { flex-direction: column; gap: 4px; }
   .steps hr { width: 14px; }
-  .bottom-nav { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid var(--line); z-index: 30; height: 60px; }
+  .bottom-nav { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; bottom: 0; left: 0; right: 0; background: var(--glass-bg); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-top: 1px solid var(--glass-line); box-shadow: 0 -8px 24px rgba(11,33,84,.08); z-index: 30; height: 60px; }
   .bottom-nav a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 600; color: var(--muted); }
   .bottom-nav a.is-on { color: var(--blue-700); }
   .bottom-nav a:hover { text-decoration: none; }
@@ -422,3 +426,9 @@ html, body { overflow-x: clip; }
 .skeleton-line { height: 14px; }
 .gallery-main.skeleton { border-radius: var(--r-lg); }
 @keyframes skeleton { from { background-position: 100% 50%; } to { background-position: 0 50%; } }
+
+/* Glass navbar ka fallback: jo browser blur nahi kar sakta wahan peeche ka content saaf dikh kar
+   text padhna mushkil karega, isliye wahan solid safed. (File ke ant me, taaki upar ke rules se jeete.) */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header, .bottom-nav { background: #fff; }
+}

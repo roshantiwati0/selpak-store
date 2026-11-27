@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { BottomNav } from "@/components/BottomNav";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { SiteFrame } from "@/components/SiteFrame";
 import { Toaster } from "@/components/Toaster";
 import { SITE } from "@/lib/config";
 import "./globals.css";
@@ -22,10 +23,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main" className="sr-only">
           Skip to content
         </a>
-        <Header />
-        <div id="main">{children}</div>
-        <Footer />
-        <BottomNav />
+        <SiteFrame
+          header={<Header />}
+          footer={
+            <>
+              <Footer />
+              <BottomNav />
+            </>
+          }
+        >
+          {children}
+        </SiteFrame>
         <Toaster />
       </body>
     </html>
