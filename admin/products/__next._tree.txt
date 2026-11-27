@@ -1,0 +1,6 @@
+:HL["/selpak-store/_next/static/chunks/2dywmhktc__hm.css","style"]
+:HL["/selpak-store/_next/static/chunks/07ez192thy5j0.css","style"]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":"products","h":96,"c":"$Q3"}]]
+1:[["children",{"s":"admin","h":96,"c":"$Q2"}]]
+0:{"b":"VXJMvIJ8eRnELTLrSuo4e","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
